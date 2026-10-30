@@ -1,3 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+@theme {
+  --font-sans: 'Segoe UI', Arial, sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  scrollbar-gutter: stable;
+}
+body {
+  margin: 0;
+  background: #070d18;
+  font-family: var(--font-sans);
+}
+button,
+a,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+::selection {
+  background: #164e63;
+  color: #cffafe;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

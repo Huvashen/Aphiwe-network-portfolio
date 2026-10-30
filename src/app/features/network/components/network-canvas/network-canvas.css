@@ -1,0 +1,125 @@
+:host {
+  display: block;
+}
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 34px;
+  padding: 6px 11px;
+  border: 1px solid #ffffff16;
+  border-radius: 7px;
+  background: #ffffff04;
+  font-size: 11px;
+  color: #abbfd3;
+  cursor: pointer;
+}
+.control:hover,
+.control[aria-pressed='true'] {
+  background: #22d3ee12;
+  color: #a5f3fc;
+  border-color: #22d3ee45;
+}
+:host a:focus-visible,
+:host button:focus-visible,
+:host input:focus-visible,
+:host [tabindex]:focus-visible {
+  outline: 2px solid #67e8f9;
+  outline-offset: 3px;
+}
+.network-viewport {
+  height: clamp(480px, 70vh, 850px);
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  background:
+    radial-gradient(ellipse at 50% 40%, #12304755, transparent 65%),
+    radial-gradient(#52718b28 1px, transparent 1px), #080f1b;
+  background-size:
+    auto,
+    22px 22px,
+    auto;
+}
+.network-viewport:active {
+  cursor: grabbing;
+}
+.diagram-stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.cable {
+  fill: none;
+  stroke: #3c7889;
+  stroke-width: 2;
+  opacity: 0.75;
+}
+.cable.uplink {
+  stroke: #818cf8;
+}
+.cable.cable-active {
+  stroke: #a5f3fc;
+  stroke-width: 4;
+  filter: drop-shadow(0 0 4px #22d3ee);
+}
+.flow {
+  fill: none;
+  stroke: #a5f3fc;
+  stroke-width: 3;
+  stroke-dasharray: 6 114;
+  opacity: 0;
+}
+.flow-visible {
+  opacity: 0.9;
+}
+.terminal {
+  margin: auto;
+  padding: 0;
+  width: min(850px, calc(100vw - 28px));
+  max-height: 85dvh;
+  border: 1px solid #3d6274;
+  border-radius: 16px;
+  background: #0b1422;
+  color: #cbd5e1;
+  box-shadow: 0 40px 140px #000b;
+  overflow: hidden;
+}
+.terminal[open] {
+  display: flex;
+  flex-direction: column;
+}
+.terminal::backdrop {
+  background: #020611cf;
+  backdrop-filter: blur(8px);
+}
+.terminal-scroll {
+  overflow: auto;
+  min-height: 100px;
+  max-height: 48dvh;
+  overscroll-behavior: contain;
+  margin: 0 20px;
+  scrollbar-color: #35556b #0b1422;
+}
+.terminal > * {
+  flex-shrink: 0;
+}
+.terminal > .terminal-scroll {
+  flex-shrink: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+  .flow {
+    display: none;
+  }
+  .diagram-stage {
+    will-change: auto;
+  }
+}
